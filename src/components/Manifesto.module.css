@@ -1,0 +1,122 @@
+.section {
+  padding: 8rem 0;
+  background: var(--bg);
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── Parallax marquee ───────────────────────── */
+.marqueeTrack {
+  display: flex;
+  white-space: nowrap;
+  font-family: var(--font-serif);
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 300;
+  font-style: italic;
+  color: #F0F0F0;
+  line-height: 1;
+  will-change: transform;
+  user-select: none;
+  pointer-events: none;
+}
+
+.marqueeBottom {
+  opacity: 0.5;
+  margin-top: -0.5rem;
+}
+
+.marqueeItem {
+  display: inline-block;
+  padding-right: 1rem;
+}
+
+/* ── Three-column inner grid ───────────────── */
+.inner {
+  display: grid;
+  grid-template-columns: 80px 1fr 340px;
+  gap: 4rem;
+  align-items: start;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+/* Left */
+.leftCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding-top: 10px;
+}
+
+.vertLine {
+  width: 1px;
+  height: 80px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  transform-origin: top;
+}
+
+/* Center */
+.centerCol { display: block; }
+
+.statement {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.8vw, 3.8rem);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--cream);
+  letter-spacing: -0.015em;
+}
+
+.lineWrapper {
+  overflow: hidden;
+  display: block;
+}
+
+.line {
+  display: block;
+}
+
+/* Right */
+.rightCol {
+  padding-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.body {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--cream-dim);
+  font-weight: 300;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  transition: gap 0.4s ease;
+}
+
+.cta:hover { gap: 20px; }
+.cta svg { transition: transform 0.4s ease; }
+.cta:hover svg { transform: translateX(4px); }
+
+/* ── Responsive ────────────────────────────── */
+@media (max-width: 1024px) {
+  .inner { grid-template-columns: 60px 1fr; }
+  .rightCol { grid-column: 1 / -1; padding-left: 60px; }
+}
+
+@media (max-width: 768px) {
+  .inner { grid-template-columns: 1fr; gap: 2rem; }
+  .leftCol { flex-direction: row; }
+  .vertLine { width: 60px; height: 1px; }
+  .rightCol { padding-left: 0; }
+}

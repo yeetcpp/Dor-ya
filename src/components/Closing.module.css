@@ -1,0 +1,174 @@
+.section {
+  position: relative;
+  background: var(--charcoal);
+  overflow: hidden;
+  padding-top: 8rem;
+}
+
+/* ── Ghost brand watermark ────────────────── */
+.bgText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-serif);
+  font-size: clamp(5rem, 13vw, 13rem);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(166, 124, 55, 0.12);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── Inner two-col ──────────────────────── */
+.inner {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 5rem;
+  align-items: center;
+  padding-bottom: 7rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Left ─────────────────────────────────── */
+.left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+.circle {
+  width: clamp(180px, 20vw, 300px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid var(--gold-dim);
+  background: radial-gradient(circle at 35% 40%,
+    rgba(166, 124, 55, 0.1),
+    rgba(130, 59, 33, 0.04),
+    transparent 70%);
+  box-shadow: 0 0 80px rgba(166, 124, 55, 0.04);
+}
+
+.quote {
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--cream-dim);
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* ── Right ─────────────────────────────────── */
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 4.5vw, 4.5rem);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.title em {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.body {
+  font-size: 1rem;
+  line-height: 1.9;
+  color: var(--cream-dim);
+  font-weight: 300;
+}
+
+/* ── CTA Button ────────────────────────── */
+.btn {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 8px;
+  width: fit-content;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 1.2rem 2.5rem;
+  border: 1px solid var(--gold-dim);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.4s ease, color 0.4s ease;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+}
+
+.btn:hover { color: var(--bg); border-color: var(--gold); }
+.btn:hover::before { transform: scaleX(1); }
+
+/* ── Footer ─────────────────────────────── */
+.footer {
+  background: rgba(250, 250, 250, 0.8);
+  border-top: 1px solid rgba(166, 124, 55, 0.1);
+  padding: 3rem 0;
+  position: relative;
+  z-index: 2;
+}
+
+.footerInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.footerLogo {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cream);
+}
+
+.footerNav {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.footerLink {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+  transition: color 0.3s ease;
+}
+
+.footerLink:hover { color: var(--gold); }
+
+/* ── Responsive ─────────────────────────── */
+@media (max-width: 900px) {
+  .inner { grid-template-columns: 1fr; text-align: center; }
+  .left { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+  .right { align-items: center; }
+  .footerInner { flex-direction: column; text-align: center; gap: 1.5rem; }
+  .footerNav { flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
+}
