@@ -1,11 +1,9 @@
 .section {
   padding: 8rem 0;
-  background: var(--bg);
+  background: var(--bg-alt);
   overflow: hidden;
-  position: relative;
 }
 
-/* ── Two-column grid ─────────────────────── */
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -13,18 +11,22 @@
   align-items: center;
 }
 
-/* ── Image column ─────────────────────────── */
+/* Image col */
 .imgCol {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .imgFrame {
   width: 100%;
   aspect-ratio: 3 / 4;
   overflow: hidden;
-  background: var(--charcoal);
-  /* Slight skew for editorial feel */
-  clip-path: polygon(0 3%, 100% 0%, 100% 97%, 0% 100%);
+  background: var(--bg-warm);
+  border: 2px dashed rgba(44, 36, 24, 0.2);
+  border-radius: 2px;
+  clip-path: polygon(0 2%, 100% 0%, 100% 98%, 0% 100%);
 }
 
 .img {
@@ -33,92 +35,116 @@
   will-change: transform;
 }
 
-.floatingTag {
+/* Floating process tag */
+.processTag {
   position: absolute;
-  bottom: -24px;
-  right: -24px;
-  background: var(--gold);
+  bottom: 30px;
+  right: -20px;
+  background: var(--ink);
   color: var(--bg);
-  padding: 18px 24px;
+  padding: 14px 18px;
   display: flex;
-  flex-direction: column;
-  gap: 6px;
+  align-items: center;
+  gap: 12px;
+  border-radius: 3px;
+  max-width: 200px;
 }
 
-.tagText {
-  font-family: var(--font-serif);
-  font-size: 1.2rem;
-  font-weight: 300;
-  font-style: italic;
+.tagIcon {
+  font-size: 1.4rem;
+  color: var(--mustard);
+  flex-shrink: 0;
+}
+
+.tagTitle {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
   color: var(--bg);
+  line-height: 1.2;
 }
 
-/* ── Text column ──────────────────────────── */
+.tagSub {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mustard);
+  margin-top: 3px;
+}
+
+.stitchWrap {
+  width: 100%;
+  max-width: 320px;
+}
+
+.stitchSvg { width: 100%; height: auto; }
+
+/* Text col */
 .textCol {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 2rem;
   will-change: transform;
 }
 
 .title {
-  font-family: var(--font-serif);
-  font-size: clamp(1.8rem, 3vw, 3rem);
-  font-weight: 300;
-  color: var(--cream);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-weight: 700;
+  color: var(--ink);
   line-height: 1.1;
   letter-spacing: -0.02em;
 }
 
-.title em {
-  color: var(--gold);
-  font-style: italic;
+.titleAccent {
+  color: var(--rust);
 }
 
 .body {
   font-size: 1rem;
   line-height: 1.9;
-  color: var(--cream-dim);
-  font-weight: 300;
-  max-width: 480px;
+  color: var(--ink-dim);
+  font-weight: 400;
+  max-width: 460px;
 }
 
-/* ── Stats ────────────────────────────────── */
+/* Stats */
 .stats {
   display: flex;
-  gap: 3rem;
-  padding: 2rem 0;
-  border-top: 1px solid rgba(166, 124, 55, 0.15);
-  border-bottom: 1px solid rgba(166, 124, 55, 0.15);
+  gap: 2.5rem;
+  padding: 1.5rem 0;
+  flex-wrap: wrap;
 }
 
 .stat {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
 
 .statNum {
-  font-family: var(--font-serif);
-  font-size: 1.8rem;
-  font-weight: 300;
-  color: var(--gold);
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 900;
   line-height: 1;
 }
 
-/* ── Stitch SVG ───────────────────────────── */
-.stitchWrap {
-  width: 200px;
-  opacity: 0.9;
+.sourcing {
+  font-size: 0.88rem;
+  color: var(--ink-dim);
+  line-height: 1.7;
+  padding-top: 0.5rem;
 }
 
-.stitchSvg {
-  width: 100%; height: auto;
+.sourcing strong {
+  color: var(--ink);
+  font-weight: 700;
 }
 
-/* ── Responsive ───────────────────────────── */
+/* Responsive */
 @media (max-width: 1024px) {
-  .grid { grid-template-columns: 1fr; }
-  .imgFrame { max-width: 500px; clip-path: none; }
-  .floatingTag { right: 0; bottom: -20px; }
+  .grid { grid-template-columns: 1fr; gap: 4rem; }
+  .imgFrame { clip-path: none; max-width: 500px; }
+  .processTag { right: 0; bottom: -10px; }
 }

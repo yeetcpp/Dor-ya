@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import Lenis from 'lenis';
 import Cursor from './components/Cursor';
 import Navbar from './components/Navbar';
@@ -11,7 +11,7 @@ import Closing from './components/Closing';
 function App() {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.4,
+      duration: 1.3,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothTouch: false,
     });

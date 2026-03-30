@@ -3,16 +3,17 @@
   top: 0; left: 0;
   width: 100%;
   z-index: 100;
-  padding: 28px 5vw;
-  transition: background 0.6s ease, padding 0.4s ease;
+  padding: 24px 5vw;
+  transition: background 0.5s ease, padding 0.4s ease, box-shadow 0.4s ease;
 }
 
 .nav.scrolled {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  padding: 18px 5vw;
-  border-bottom: 1px solid rgba(166, 124, 55, 0.12);
+  background: rgba(253, 248, 241, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 16px 5vw;
+  box-shadow: 0 2px 16px rgba(44, 36, 24, 0.07);
+  border-bottom: 1.5px dashed rgba(44, 36, 24, 0.12);
 }
 
 .inner {
@@ -21,13 +22,13 @@
   justify-content: space-between;
 }
 
-.label {
+.left {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.2em;
-  color: var(--gold);
-  opacity: 0.7;
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
+  color: var(--ink-faint);
+  min-width: 80px;
 }
 
 .logo {
@@ -37,33 +38,46 @@
 }
 
 .logoText {
-  font-family: var(--font-serif);
-  font-size: 1.4rem;
-  font-weight: 300;
-  letter-spacing: 0.25em;
-  color: var(--cream);
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--ink);
   text-transform: uppercase;
 }
 
-.actions {
+.right {
   display: flex;
   align-items: center;
   gap: 24px;
+  min-width: 80px;
+  justify-content: flex-end;
 }
 
-.menuBtn {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 4px;
+.navLink {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-dim);
+  position: relative;
+  transition: color 0.3s ease;
 }
 
-.menuBtn span {
-  display: block;
-  width: 24px;
-  height: 1px;
-  background: var(--cream);
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--rust);
   transition: width 0.3s ease;
 }
-.menuBtn span:last-child { width: 16px; }
-.menuBtn:hover span { width: 24px; }
+
+.navLink:hover { color: var(--rust); }
+.navLink:hover::after { width: 100%; }
+
+@media (max-width: 600px) {
+  .right { display: none; }
+}
